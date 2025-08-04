@@ -10,8 +10,8 @@ Any Structured Datasets
 
 ```bash
 # clone project
-git clone https://github.com/DimensionSTP/llm-fine-tune-hf.git
-cd llm-fine-tune-hf
+git clone https://github.com/DimensionSTP/embedding-fine-tune-hf.git
+cd embedding-fine-tune-hf
 
 # [OPTIONAL] create conda environment
 conda create -n myenv python=3.10 -y
