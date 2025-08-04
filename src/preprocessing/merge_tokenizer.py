@@ -14,7 +14,7 @@ from omegaconf import DictConfig
 
 @hydra.main(
     config_path="../../configs/",
-    config_name="sft.yaml",
+    config_name="triplet.yaml",
 )
 def merge_tokenizer(
     config: DictConfig,
