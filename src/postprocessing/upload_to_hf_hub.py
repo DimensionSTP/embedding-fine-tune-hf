@@ -20,7 +20,7 @@ from omegaconf import DictConfig
 
 @hydra.main(
     config_path="../../configs/",
-    config_name="sft.yaml",
+    config_name="triplet.yaml",
 )
 def upload_to_hf_hub(
     config: DictConfig,
