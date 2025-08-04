@@ -1,17 +1,17 @@
 # @package _global_
 defaults:
-  - dataset: sft_dataset
-  - training_arguments: sft_config
-  - trainer: sft_trainer
+  - dataset: triplet_dataset
+  - training_arguments: triplet_config
+  - trainer: triplet_trainer
   - deepspeed: ds_config
   - test_dataset: test_dataset
   - hydra: hydra
 
-package_name: llm-fine-tune-hf
+package_name: embedding-fine-tune-hf
 project_dir: ${oc.env:PROJECT_DIR}/${package_name}
 connected_dir: ${oc.env:CONNECTED_DIR}/${package_name}
 
-fine_tune_method: sft
+fine_tune_method: triplet
 
 seed: 2025
 
@@ -41,11 +41,11 @@ role_column_name: role
 content_column_name: content
 assistant_column_name: assistant
 upload_user: Qwen
-model_type: Qwen3-8B
+model_type: Qwen3-Embedding-4B
 pretrained_model_name: ${upload_user}/${model_type}
 custom_data_encoder_path: ${connected_dir}/merged/data_encoders/${pretrained_model_name}
 revision: main
-reference_data_encoder_name: Qwen/Qwen3-8B
+reference_data_encoder_name: Qwen/Qwen3-Embedding-4B
 left_padding: true
 is_enable_thinking: false
 merged_model_path: ${connected_dir}/merged/models/${pretrained_model_name}
@@ -96,7 +96,7 @@ max_grad_norm: 1
 epoch: 2
 step: 250
 
-model_name: CausalLM-SFT
+model_name: Embedding-Triplet
 mode: train
 
 project_name: ${model_name}-${dataset_name}-${mode}
@@ -124,18 +124,5 @@ generation_config:
 test_data_dir: benchmarks/test
 test_output_dir: ${connected_dir}/tests/${model_type}
 test_output_name: ${dataset_name}
-
-dus_hidden_layers: 54
-wus_hidden_scale: 2
-wus_scaling_method: concat
-wus_attention_scaling: heads
-num_safetensors: 5
-
-korean_model_name: beomi/OPEN-SOLAR-KO-10.7B
-reasoning_model_name: Qwen/QwQ-32B
-reasoning_tokens:
-  - <think>
-  - </think>
-
 run_name: ${project_name}
 work_dir: ${hydra:runtime.cwd}

@@ -1,5 +1,5 @@
 structural:
-  _target_: src.datasets.SFTStructuralDataset
+  _target_: src.datasets.TripletStructuralDataset
   data_path: ${connected_dir}/data
   split: ${split.train}
   split_ratio: ${split_ratio}
@@ -25,7 +25,7 @@ structural:
   response_start_template: ${response_start_template}
 
 conversational:
-  _target_: src.datasets.SFTConversationalDataset
+  _target_: src.datasets.TripletConversationalDataset
   data_path: ${connected_dir}/data
   split: ${split.train}
   split_ratio: ${split_ratio}
