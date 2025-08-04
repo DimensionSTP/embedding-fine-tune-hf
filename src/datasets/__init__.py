@@ -1,15 +1,11 @@
-from .sft_dataset import StructuralDataset as SFTStructuralDataset
-from .sft_dataset import ConversationalDataset as SFTConversationalDataset
-from .dpo_dataset import StructuralDataset as DPOStructuralDataset
-from .dpo_dataset import ConversationalDataset as DPOConversationalDataset
+from .triplet_dataset import StructuralDataset as TripletStructuralDataset
+from .triplet_dataset import ConversationalDataset as TripletConversationalDataset
 from .test_dataset import StructuralDataset as TestStructuralDataset
 from .test_dataset import ConversationalDataset as TestConversationalDataset
 
 __all__ = [
-    "SFTStructuralDataset",
-    "SFTConversationalDataset",
-    "DPOStructuralDataset",
-    "DPOConversationalDataset",
+    "TripletStructuralDataset",
+    "TripletConversationalDataset",
     "TestStructuralDataset",
     "TestConversationalDataset",
 ]
