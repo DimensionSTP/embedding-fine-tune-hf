@@ -1,0 +1,2 @@
+_target_: sentence_transformers.losses.MultipleNegativesRankingLoss
+scale: 20.0
