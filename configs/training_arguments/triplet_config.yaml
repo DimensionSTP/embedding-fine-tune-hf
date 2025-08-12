@@ -1,4 +1,4 @@
-_target_: trl.SFTConfig
+_target_: sentence_transformers.SentenceTransformerTrainingArguments
 dataset_text_field: null
 dataset_kwargs:
   skip_prepare_dataset: true
