@@ -1,9 +1,9 @@
 # @package _global_
 defaults:
   - dataset: triplet_dataset
+  - loss: triplet_loss
   - training_arguments: triplet_config
   - trainer: triplet_trainer
-  - deepspeed: ds_config
   - test_dataset: test_dataset
   - hydra: hydra
 
@@ -23,49 +23,28 @@ split:
 
 batch_size: 16
 eval_batch_size: 16
-workers_ratio: 8
-use_all_workers: false
 
 split_ratio: 1e-2
 is_strict_split: false
 
 dataset_name: tulu
 dataset_format: parquet
-is_sft: true
-is_preprocessed: false
-instruction_column_name: instruction
-data_column_name: input
-target_column_name: response
-conversation_column_name: messages
-role_column_name: role
-content_column_name: content
-assistant_column_name: assistant
+anchor_column_name: anchor
+positive_column_name: positive
+negative_column_name: negative
 upload_user: Qwen
 model_type: Qwen3-Embedding-4B
 pretrained_model_name: ${upload_user}/${model_type}
 custom_data_encoder_path: ${connected_dir}/merged/data_encoders/${pretrained_model_name}
 revision: main
 reference_data_encoder_name: Qwen/Qwen3-Embedding-4B
-left_padding: true
-is_enable_thinking: false
 merged_model_path: ${connected_dir}/merged/models/${pretrained_model_name}
-max_length: 4096
-response_start_template: <|im_start|>${assistant_column_name}
 
 user_name: ${oc.env:USER_NAME}
 model_detail: ${model_type}
 upload_tag: sft
 model_path: ${user_name}/${model_detail}-${upload_tag}
 
-precision: bf16
-attn_implementation: flash_attention_2
-
-is_quantized: false
-quantization_config:
-  load_in_4bit: true
-  bnb_4bit_quant_type: nf4
-  bnb_4bit_use_double_quant: true
-  bnb_4bit_compute_dtype: bfloat16
 is_peft: false
 peft_config:
   r: 64
@@ -88,7 +67,7 @@ scheduler_type: cosine
 warmup_ratio: 5e-2
 
 devices: ${oc.decode:${oc.env:DEVICES,null}}
-strategy: deepspeed
+strategy: sentence_transformers
 logging_steps: 10
 is_bf16: true
 gradient_accumulation_steps: 1
@@ -113,13 +92,6 @@ resume_training: false
 resume_from_checkpoint: null
 use_validation: true
 eval_strategy: epoch
-
-max_new_tokens: 512
-do_sample: true
-generation_config:
-  temperature: 0.6
-  top_p: 0.95
-  top_k: 20
 
 test_data_dir: benchmarks/test
 test_output_dir: ${connected_dir}/tests/${model_type}
