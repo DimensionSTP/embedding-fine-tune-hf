@@ -47,10 +47,10 @@ python main.py mode=train
 python main.py mode=test
 ```
 
-* end-to-end(big model)
+* end-to-end(vLLM)
 
 ```shell
-python main.py mode=test_large
+python main.py mode=test_vllm
 ```
 
 ### Examples of shell scipts
@@ -79,37 +79,13 @@ bash scripts/train.sh
 bash scripts/test.sh
 ```
 
-* test_large
+* test_vllm
 
 ```shell
-bash scripts/test_large.sh
+bash scripts/test_vllm.sh
 ```
 
 ### Additional Options
-
-* SFT train(masking input)
-
-```shell
-is_sft={True or False}
-```
-
-* Use preprocessed tokenizer option
-
-```shell
-is_preprocessed={True or False}
-```
-
-* Left padding option
-
-```shell
-left_padding={True or False}
-```
-
-* Pure decoder based LLM QLoRA 4-bit quantization option
-
-```shell
-is_quantized={True or False}
-```
 
 * Pure decoder based LLM LoRA or QLoRA PEFT option
 
@@ -117,23 +93,11 @@ is_quantized={True or False}
 is_peft={True or False}
 ```
 
-* For LLM full fine-tuning(Continued Pretraining) in multi-GPU, recommended
-
-```shell
-strategy=deepspeed
-```
-
 * Upload user name and model name at HuggingFace Model card
 
 ```shell
 upload_user={upload_user} 
 model_type={model_type}
-```
-
-* Set data and target max length for model training and generation
-
-```shell
-max_length={max_length} 
 ```
 
 __If you want to change main config, use --config-name={config_name}.__
