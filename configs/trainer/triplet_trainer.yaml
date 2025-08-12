@@ -1,1 +1,1 @@
-_target_: trl.SFTTrainer
+_target_: sentence_transformers.SentenceTransformerTrainer
