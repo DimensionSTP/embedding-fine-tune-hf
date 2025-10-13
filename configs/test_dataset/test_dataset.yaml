@@ -1,8 +1,0 @@
-structural:
-  _target_: src.datasets.TestStructuralDataset
-  data_path: ${connected_dir}/data
-  dataset_name: ${dataset_name}
-  dataset_format: ${dataset_format}
-  anchor_column_name: ${anchor_column_name}
-  positive_column_name: ${positive_column_name}
-  negative_column_name: ${negative_column_name}
