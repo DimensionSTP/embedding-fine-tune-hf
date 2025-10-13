@@ -19,6 +19,14 @@ class SetUp:
         self.config = config
         self.data_type = self.config.data_type
         self.revision = self.config.revision
+        self.num_cpus = os.cpu_count()
+        self.num_fit_workers = min(
+            self.num_cpus,
+            (config.devices * config.workers_ratio),
+        )
+        self.num_workers = (
+            self.num_cpus if config.use_all_workers else self.num_fit_workers
+        )
 
     def get_dataset(self) -> object:
         dataset: object = instantiate(
@@ -26,24 +34,11 @@ class SetUp:
         )
         return dataset()
 
-    def get_test_dataset(self) -> object:
-        test_dataset: object = instantiate(
-            self.config.test_dataset[self.data_type],
-        )
-        return test_dataset
-
     def get_model(self) -> SentenceTransformer:
         pretrained_model_name = self.config.pretrained_model_name
-        if self.config.is_preprocessed:
-            merged_model_path = os.path.join(
-                self.config.merged_model_path,
-                self.config.pretrained_model_name,
-            )
-            if os.path.exists(merged_model_path):
-                pretrained_model_name = merged_model_path
 
         model = SentenceTransformer(
-            pretrained_model_name_or_path=pretrained_model_name,
+            model_name_or_path=pretrained_model_name,
             revision=self.revision,
         )
 
