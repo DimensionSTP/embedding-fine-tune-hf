@@ -27,7 +27,7 @@ eval_batch_size: 16
 split_ratio: 1e-2
 is_strict_split: false
 
-dataset_name: tulu
+dataset_name: triplet
 dataset_format: parquet
 anchor_column_name: anchor
 positive_column_name: positive
@@ -42,10 +42,10 @@ merged_model_path: ${connected_dir}/merged/models/${pretrained_model_name}
 
 user_name: ${oc.env:USER_NAME}
 model_detail: ${model_type}
-upload_tag: sft
+upload_tag: triplet
 model_path: ${user_name}/${model_detail}-${upload_tag}
 
-is_peft: false
+is_peft: true
 peft_config:
   r: 64
   lora_alpha: 16
@@ -60,20 +60,20 @@ gradient_checkpointing_kwargs:
   use_reentrant: false
 
 optim: paged_adamw_32bit
-lr: 5e-6
+lr: 3e-6
 weight_decay: 1e-1
 
 scheduler_type: cosine
 warmup_ratio: 5e-2
 
 devices: ${oc.decode:${oc.env:DEVICES,null}}
-strategy: sentence_transformers
+strategy: deepspeed
 logging_steps: 10
 is_bf16: true
-gradient_accumulation_steps: 1
+gradient_accumulation_steps: 4
 max_grad_norm: 1
 epoch: 2
-step: 250
+step: 30
 
 model_name: Embedding-Triplet
 mode: train
