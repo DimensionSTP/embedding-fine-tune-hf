@@ -27,6 +27,10 @@ def train(
 
     training_arguments = setup.get_training_arguments()
 
+    ds_config = setup.get_ds_config()
+    if ds_config:
+        training_arguments.deepspeed = ds_config
+
     loss_config = OmegaConf.to_container(
         config.loss,
         resolve=True,
