@@ -4,7 +4,7 @@ defaults:
   - loss: triplet_loss
   - training_arguments: triplet_config
   - trainer: triplet_trainer
-  - test_dataset: test_dataset
+  - deepspeed: ds_config
   - hydra: hydra
 
 package_name: embedding-fine-tune-hf
