@@ -33,10 +33,7 @@ negative_column_name: negative
 upload_user: Qwen
 model_type: Qwen3-Embedding-4B
 pretrained_model_name: ${upload_user}/${model_type}
-custom_data_encoder_path: ${connected_dir}/merged/data_encoders/${pretrained_model_name}
 revision: main
-reference_data_encoder_name: Qwen/Qwen3-Embedding-4B
-merged_model_path: ${connected_dir}/merged/models/${pretrained_model_name}
 
 user_name: ${oc.env:USER_NAME}
 model_detail: ${model_type}
@@ -78,8 +75,7 @@ mode: train
 
 project_name: ${model_name}-${dataset_name}-${mode}
 total_batch_size: bs=${batch_size}x${devices}x${gradient_accumulation_steps}
-length_info: max_length=${max_length}
-save_detail: ${model_detail}-is_sft=${is_sft}-is_quantized=${is_quantized}-is_peft=${is_peft}-${length_info}-${total_batch_size}
+save_detail: ${model_detail}-is_peft=${is_peft}-${total_batch_size}
 logging_name: ${save_detail}-lr${lr}
 
 output_dir: ${connected_dir}/checkpoints/${model_name}/${dataset_name}/${strategy}/${save_detail}
@@ -91,8 +87,5 @@ resume_from_checkpoint: null
 use_validation: true
 eval_strategy: epoch
 
-test_data_dir: benchmarks/test
-test_output_dir: ${connected_dir}/tests/${model_type}
-test_output_name: ${dataset_name}
 run_name: ${project_name}
 work_dir: ${hydra:runtime.cwd}
