@@ -6,35 +6,29 @@
 #SBATCH --output=logs/train_output.log
 #SBATCH --error=logs/train_error.log
 
-cd ~/llm-fine-tune
+cd ~/embedding-fine-tune-hf
 
 module add compilers/cuda/12.4 compilers/gcc/10.2.0 libraries/nccl/2.21.5
 source activate myenv
 
-data_type="conversational"
+data_type="structural"
 split_ratio=1e-2
 is_strict_split=False
-dataset_name="tulu"
-is_sft=True
-is_preprocessed=False
+dataset_name="triplet"
 strategy="deepspeed"
 upload_user="Qwen"
-model_type="Qwen3-8B"
+model_type="Qwen3-Embedding-4B"
 revision="main"
-left_padding=True
-is_enable_thinking=False
-is_quantized=False
-is_peft=False
-max_length=4096
+is_peft=True
 is_bf16=True
-batch_size=16
-eval_batch_size=16
-gradient_accumulation_steps=1
-lr=5e-6
+batch_size=4
+eval_batch_size=4
+gradient_accumulation_steps=4
+lr=3e-6
 weight_decay=1e-1
 warmup_ratio=5e-2
 epoch=2
-step=250
+step=30
 workers_ratio=8
 use_all_workers=False
 
@@ -44,17 +38,11 @@ if [ "$strategy" = "deepspeed" ]; then
         split_ratio=$split_ratio \
         is_strict_split=$is_strict_split \
         dataset_name=$dataset_name \
-        is_sft=$is_sft \
-        is_preprocessed=$is_preprocessed \
         strategy=$strategy \
         upload_user=$upload_user \
         model_type=$model_type \
         revision=$revision \
-        left_padding=$left_padding \
-        is_enable_thinking=$is_enable_thinking \
-        is_quantized=$is_quantized \
         is_peft=$is_peft \
-        max_length=$max_length \
         is_bf16=$is_bf16 \
         batch_size=$batch_size \
         eval_batch_size=$eval_batch_size \
@@ -72,17 +60,11 @@ else
         split_ratio=$split_ratio \
         is_strict_split=$is_strict_split \
         dataset_name=$dataset_name \
-        is_sft=$is_sft \
-        is_preprocessed=$is_preprocessed \
         strategy=$strategy \
         upload_user=$upload_user \
         model_type=$model_type \
         revision=$revision \
-        left_padding=$left_padding \
-        is_enable_thinking=$is_enable_thinking \
-        is_quantized=$is_quantized \
         is_peft=$is_peft \
-        max_length=$max_length \
         is_bf16=$is_bf16 \
         batch_size=$batch_size \
         eval_batch_size=$eval_batch_size \
