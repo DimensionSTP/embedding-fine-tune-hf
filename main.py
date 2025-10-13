@@ -12,6 +12,23 @@ os.environ["HF_HOME"] = os.environ.get("HF_HOME")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 warnings.filterwarnings("ignore")
 
+import sys
+
+filtered_argv = []
+for arg in sys.argv:
+    if arg.startswith("--local_rank"):
+        continue
+    if arg.startswith("--node_rank"):
+        continue
+    if arg.startswith("--world_rank"):
+        continue
+    if arg.startswith("--master_addr"):
+        continue
+    if arg.startswith("--master_port"):
+        continue
+    filtered_argv.append(arg)
+sys.argv = filtered_argv
+
 import hydra
 from omegaconf import DictConfig
 
