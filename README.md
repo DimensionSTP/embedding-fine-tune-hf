@@ -39,20 +39,6 @@ USER_NAME={USER_NAME}
 python main.py mode=train
 ```
 
-### Test
-
-* end-to-end
-
-```shell
-python main.py mode=test
-```
-
-* end-to-end(vLLM)
-
-```shell
-python main.py mode=test_vllm
-```
-
 ### Examples of shell scipts
 
 * full preprocessing
@@ -71,18 +57,6 @@ bash scripts/preprocess_dataset.sh
 
 ```shell
 bash scripts/train.sh
-```
-
-* test
-
-```shell
-bash scripts/test.sh
-```
-
-* test_vllm
-
-```shell
-bash scripts/test_vllm.sh
 ```
 
 ### Additional Options
