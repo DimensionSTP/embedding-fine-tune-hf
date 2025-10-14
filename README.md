@@ -41,18 +41,6 @@ python main.py mode=train
 
 ### Examples of shell scipts
 
-* full preprocessing
-
-```shell
-bash scripts/preprocess.sh
-```
-
-* dataset preprocessing
-
-```shell
-bash scripts/preprocess_dataset.sh
-```
-
 * train
 
 ```shell
