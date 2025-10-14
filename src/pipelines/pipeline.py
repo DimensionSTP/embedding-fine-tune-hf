@@ -80,8 +80,8 @@ def train(
         model=model,
         args=training_arguments,
         train_dataset=train_dataset,
-        eval_dataset=val_dataset,
         loss=loss,
+        evaluator=evaluator,
         **trainer_config,
     )
 
