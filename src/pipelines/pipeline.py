@@ -47,6 +47,24 @@ def train(
         **loss_config,
     )
 
+    evaluator_config = OmegaConf.to_container(
+        config.evaluator,
+        resolve=True,
+    )
+    evaluator_config.pop(
+        "_target_",
+        None,
+    )
+
+    EvaluatorClass = get_class(config.evaluator._target_)
+
+    evaluator = EvaluatorClass(
+        anchors=val_dataset[config.anchor_column_name],
+        positives=val_dataset[config.positive_column_name],
+        negatives=val_dataset[config.negative_column_name],
+        **evaluator_config,
+    )
+
     trainer_config = OmegaConf.to_container(
         config.trainer,
         resolve=True,
