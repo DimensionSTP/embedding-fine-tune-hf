@@ -1,0 +1,2 @@
+_target_: sentence_transformers.evaluation.TripletEvaluator
+batch_size : ${eval_batch_size}
