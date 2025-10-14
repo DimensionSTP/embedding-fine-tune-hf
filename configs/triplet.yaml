@@ -4,6 +4,7 @@ defaults:
   - loss: triplet_loss
   - training_arguments: triplet_config
   - trainer: triplet_trainer
+  - evaluator: triplet_evaluator
   - deepspeed: ds_config
   - hydra: hydra
 
