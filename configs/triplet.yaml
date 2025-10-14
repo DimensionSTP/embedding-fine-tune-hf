@@ -18,8 +18,8 @@ seed: 2025
 
 data_type: structural
 
-batch_size: 4
-eval_batch_size: 4
+batch_size: 16
+eval_batch_size: 16
 workers_ratio: 8
 use_all_workers: false
 
@@ -41,7 +41,7 @@ model_detail: ${model_type}
 upload_tag: triplet
 model_path: ${user_name}/${model_detail}-${upload_tag}
 
-is_peft: true
+is_peft: false
 peft_config:
   r: 64
   lora_alpha: 16
@@ -66,10 +66,10 @@ devices: ${oc.decode:${oc.env:DEVICES,null}}
 strategy: deepspeed
 logging_steps: 10
 is_bf16: true
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 1
 max_grad_norm: 1
 epoch: 2
-step: 30
+step: 100
 
 model_name: Embedding-Triplet
 mode: train
