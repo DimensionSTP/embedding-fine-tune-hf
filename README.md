@@ -1,10 +1,10 @@
-# LLM model scaling pipeline
+# Embedding model fine-tuning pipeline
 
-## For (s)LLM model scaling
+## For Embedding model fine-tuning
 
 ### Dataset
 
-Any Structured Datasets
+Any Structured Datasets(default setting is triplet)
 
 ### Quick setup
 
