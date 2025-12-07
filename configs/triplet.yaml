@@ -75,8 +75,10 @@ model_name: Embedding-Triplet
 mode: train
 
 project_name: ${model_name}-${dataset_name}-${mode}
+peft_info: is_peft=${is_peft}
+peft_detail: r=${peft_config.r}-a=${peft_config.lora_alpha}
 total_batch_size: bs=${batch_size}x${devices}x${gradient_accumulation_steps}
-save_detail: ${model_detail}-is_peft=${is_peft}-${total_batch_size}
+save_detail: ${model_detail}-${peft_info}-${peft_detail}-${total_batch_size}
 logging_name: ${save_detail}-lr${lr}
 
 output_dir: ${connected_dir}/checkpoints/${model_name}/${dataset_name}/${strategy}/${save_detail}
