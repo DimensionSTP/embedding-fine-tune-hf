@@ -49,7 +49,7 @@ bash scripts/train.sh
 
 ### Additional Options
 
-* Pure decoder based LLM LoRA or QLoRA PEFT option
+* LoRA PEFT option
 
 ```shell
 is_peft={True or False}
