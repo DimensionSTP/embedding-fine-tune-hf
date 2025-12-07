@@ -8,13 +8,14 @@
 
 cd ~/embedding-fine-tune-hf
 
-module add compilers/cuda/12.4 compilers/gcc/10.2.0 libraries/nccl/2.21.5
+module add compilers/cuda/12.8 compilers/gcc/10.2.0 libraries/nccl/2.21.5
 source activate myenv
 
 data_type="structural"
 split_ratio=1e-2
 is_strict_split=False
 dataset_name="triplet"
+dataset_format="parquet"
 strategy="deepspeed"
 upload_user="Qwen"
 model_type="Qwen3-Embedding-4B"
@@ -38,6 +39,7 @@ if [ "$strategy" = "deepspeed" ]; then
         split_ratio=$split_ratio \
         is_strict_split=$is_strict_split \
         dataset_name=$dataset_name \
+        dataset_format=$dataset_format \
         strategy=$strategy \
         upload_user=$upload_user \
         model_type=$model_type \
@@ -60,6 +62,7 @@ else
         split_ratio=$split_ratio \
         is_strict_split=$is_strict_split \
         dataset_name=$dataset_name \
+        dataset_format=$dataset_format \
         strategy=$strategy \
         upload_user=$upload_user \
         model_type=$model_type \
