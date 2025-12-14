@@ -1,7 +1,13 @@
+from typing import Dict, Optional, Any
 import os
 
 from omegaconf import DictConfig, OmegaConf
 from hydra.utils import instantiate
+
+import importlib
+
+datasets = importlib.import_module("datasets")
+HFDataset = datasets.Dataset
 
 from sentence_transformers import (
     SentenceTransformer,
@@ -9,6 +15,8 @@ from sentence_transformers import (
 )
 
 from peft import LoraConfig
+
+from ..datasets import *
 
 
 class SetUp:
@@ -28,8 +36,8 @@ class SetUp:
             self.num_cpus if config.use_all_workers else self.num_fit_workers
         )
 
-    def get_dataset(self) -> object:
-        dataset: object = instantiate(
+    def get_dataset(self) -> Dict[str, HFDataset]:
+        dataset: TripletStructuralDataset = instantiate(
             self.config.dataset[self.data_type],
         )
         return dataset()
@@ -60,7 +68,7 @@ class SetUp:
         )
         return training_arguments
 
-    def get_ds_config(self) -> DictConfig:
+    def get_ds_config(self) -> Optional[Dict[str, Any]]:
         if self.config.strategy == "deepspeed":
             ds_config = OmegaConf.to_container(
                 self.config.deepspeed,
