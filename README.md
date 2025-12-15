@@ -44,7 +44,7 @@ python main.py mode=train
 * train
 
 ```shell
-bash scripts/train.sh
+bash scripts/train/train.sh
 ```
 
 ### Additional Options
