@@ -31,3 +31,8 @@ baseline/
 tmp*
 !requirements.txt
 !packages.txt
+.skills/
+SKILLS.md
+AGENTS.md
+CLAUDE.md
+deep-research-report.md
