@@ -67,3 +67,13 @@ __If you want to change main config, use --config-name={config_name}.__
 __Also, you can use --multirun option.__
 
 __You can set additional arguments through the command line.__
+
+### Quick setup (pyproject.toml)
+
+```bash
+# install project dependencies from pyproject.toml
+pip install .
+
+# [OPTIONAL] editable install for development
+pip install -e .
+```

@@ -1,0 +1,37 @@
+name: Python Compile Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  compile-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile Python files
+        shell: bash
+        run: |
+          set -euo pipefail
+          targets=()
+          [[ -f main.py ]] && targets+=(main.py)
+          [[ -f app.py ]] && targets+=(app.py)
+          [[ -f cli.py ]] && targets+=(cli.py)
+          [[ -f evaluate.py ]] && targets+=(evaluate.py)
+          [[ -f preprocess_benchmark.py ]] && targets+=(preprocess_benchmark.py)
+          [[ -f set_vector_store.py ]] && targets+=(set_vector_store.py)
+          [[ -d src ]] && targets+=(src)
+          if [[ ${#targets[@]} -eq 0 ]]; then
+            echo "No Python targets found."
+            exit 0
+          fi
+          python -m compileall "${targets[@]}"
