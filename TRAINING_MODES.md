@@ -1,19 +1,46 @@
 # Training Modes Contract
 
-## Modes
+## Scope
 
-- `mode=train`: run embedding fine-tuning pipeline.
+Contract for `embedding-fine-tune-hf` training execution.
 
-## Inputs
+## Entry Point
 
-- dataset configured under `configs/dataset/*`
-- model/trainer configs under `configs/*`
+- Command: `python main.py mode=train`
+- Script equivalent: `bash scripts/train/train.sh`
 
-## Outputs
+## Required Inputs
 
-- checkpoints: `${CONNECTED_DIR}/.../checkpoints` (config-dependent)
-- logs: `logs/` and optional `wandb` outputs
+Environment variables:
 
-## Notes
+- `PROJECT_DIR`
+- `CONNECTED_DIR`
+- `DEVICES`
+- `HF_HOME`
+- `USER_NAME`
 
-- Keep CLI overrides synchronized with config keys.
+Config expectations:
+
+- `mode` must be `train`
+- Optional runtime knobs include `is_sft`, `is_preprocessed`, `left_padding`, `is_quantized`, `is_peft`, `strategy`, `max_length`
+
+## Output Contract
+
+- Training must produce checkpoint/artifact outputs at config-defined directories.
+- Log output must contain selected model/data/runtime settings for reproducibility.
+
+## Failure Contract
+
+- Unsupported mode must raise a clear runtime error.
+- Missing required environment variables must fail fast before long training loops.
+
+## Release/Docs Sync Rule
+
+If mode names, required env vars, or output path conventions change, update together:
+
+- `README.md`
+- `README_ko.md`
+- `USAGE_GUIDE.md`
+- `USAGE_GUIDE_ko.md`
+- this contract file
+- `CHANGELOG.md`
