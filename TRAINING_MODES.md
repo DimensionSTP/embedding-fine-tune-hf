@@ -39,8 +39,6 @@ Config expectations:
 If mode names, required env vars, or output path conventions change, update together:
 
 - `README.md`
-- `README_ko.md`
 - `USAGE_GUIDE.md`
-- `USAGE_GUIDE_ko.md`
 - this contract file
 - `CHANGELOG.md`
