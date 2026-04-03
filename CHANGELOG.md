@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.6] - 2026-04-03
+
+- Sync `packages.txt` and `requirements.txt` with the validated environment freeze.
+- Update runtime dependency pins for the embedding fine-tuning pipeline to match the current validated baseline.
+
 ## [v1.0.5] - 2026-03-24
 
 - Remove stale references to deleted Korean documentation files from the training contract.
