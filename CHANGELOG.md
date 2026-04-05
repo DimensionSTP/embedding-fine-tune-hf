@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.7] - 2026-04-06
+
+- Sync `packages.txt` and `requirements.txt` with the current `joshpp` runtime freeze after compatibility-driven dependency adjustments.
+- Update embedding runtime dependency pins to keep install manifests aligned with the latest validated local environment.
+
 ## [v1.0.6] - 2026-04-03
 
 - Sync `packages.txt` and `requirements.txt` with the validated environment freeze.

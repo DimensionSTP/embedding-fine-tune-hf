@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "embedding-fine-tune-hf"
-version = "1.0.6"
+version = "1.0.7"
 description = "Project package metadata"
 readme = "README.md"
 requires-python = ">=3.10"
