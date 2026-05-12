@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.8] - 2026-05-12
+
+- Sync `packages.txt` with the current `joshpp` runtime freeze after the dependency refresh that includes `sentence-transformers==5.4.1`, `transformers==5.8.0`, and related framework pins.
+- Update embedding fine-tuning `requirements.txt` pins for `huggingface-hub`, `numpy`, `sentence-transformers`, and `transformers` to match the validated environment.
+- Keep install and reproducibility manifests aligned for embedding training workflows under the refreshed local runtime baseline.
+
 ## [v1.0.7] - 2026-04-06
 
 - Sync `packages.txt` and `requirements.txt` with the current `joshpp` runtime freeze after compatibility-driven dependency adjustments.
