@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.9] - 2026-05-14
+
+- Sync `packages.txt` with the current validated runtime freeze after the distributed-runtime package refresh.
+- Record `mpi4py==4.1.1` and `mpich==5.0.1` in the full environment snapshot for reproducible MPI-capable runtime reconstruction.
+- Keep direct embedding fine-tuning dependency manifests unchanged because the new packages are not imported by the project code or required as direct install dependencies.
+
 ## [v1.0.8] - 2026-05-12
 
 - Sync `packages.txt` with the current validated runtime freeze after the dependency refresh that includes `sentence-transformers==5.4.1`, `transformers==5.8.0`, and related framework pins.
