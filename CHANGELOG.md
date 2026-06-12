@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.10] - 2026-06-12
+
+- Sync `packages.txt` with the current validated runtime freeze after the transformer and runtime package refresh.
+- Update embedding fine-tuning `requirements.txt` pins for `huggingface-hub==1.19.0` and `transformers==5.11.0` to match the validated environment.
+- Record refreshed runtime packages including `trl==1.6.0`, `vllm==0.19.0`, `liger_kernel==0.8.0`, and MLflow-related packages in the full environment snapshot for reproducible setup.
+
 ## [v1.0.9] - 2026-05-14
 
 - Sync `packages.txt` with the current validated runtime freeze after the distributed-runtime package refresh.
