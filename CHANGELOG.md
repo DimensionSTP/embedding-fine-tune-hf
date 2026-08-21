@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.11] - 2026-08-21
+
+- Synchronize `packages.txt` with the validated CUDA 12.9 runtime snapshot, including PyTorch 2.11.0, Transformers 5.14.1, TRL 1.10.0, vLLM 0.26.0, FlashInfer 0.6.14, and Safetensors 0.8.0.
+- Align direct embedding dependencies by updating `numpy` from 2.4.4 to 2.3.5, `safetensors` from 0.7.0 to 0.8.0, `torch` from 2.10.0 to 2.11.0, and `transformers` from 5.11.0 to 5.14.1.
+- Update README and usage installation commands to use the pinned uv installer and the CUDA 12.9 PyTorch backend for reproducible GPU setup.
+- Preserve the existing embedding training interfaces, configuration contract, and runtime behavior while refreshing dependency and installation metadata.
+
 ## [v1.0.10] - 2026-06-12
 
 - Sync `packages.txt` with the current validated runtime freeze after the transformer and runtime package refresh.
