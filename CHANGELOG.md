@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.13] - 2026-08-21
+
+- Update the validated environment snapshot to `flash-linear-attention==0.5.2` and `fla-core==0.5.2`, including the Blackwell Gated DeltaNet backward stability fix.
+- Add the CUDA 12.9 compiler and pinned cuRAND runtime and development package installation contract required to build DeepSpeed CPUAdam.
+- Preserve embedding datasets, training behavior, direct Python dependencies, configuration, and artifact interfaces without source changes.
+
 ## [v1.0.12] - 2026-08-21
 
 - Synchronize `packages.txt` with the validated CUDA 12.9 runtime snapshot by recording `flashinfer-jit-cache==0.6.14+cu129`.
