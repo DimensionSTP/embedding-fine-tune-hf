@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.12] - 2026-08-21
+
+- Synchronize `packages.txt` with the validated CUDA 12.9 runtime snapshot by recording `flashinfer-jit-cache==0.6.14+cu129`.
+- Preserve the embedding training dependency contract, source code, configuration, and execution interfaces without adding FlashInfer as a direct project requirement.
+
 ## [v1.0.11] - 2026-08-21
 
 - Synchronize `packages.txt` with the validated CUDA 12.9 runtime snapshot, including PyTorch 2.11.0, Transformers 5.14.1, TRL 1.10.0, vLLM 0.26.0, FlashInfer 0.6.14, and Safetensors 0.8.0.
