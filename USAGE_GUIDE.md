@@ -13,13 +13,19 @@ Operational runbook for `embedding-fine-tune-hf` covering environment setup, tra
 ## Install
 
 ```bash
+conda install -c nvidia "cuda-nvcc=12.9" -y
+conda install -c defaults "libcurand=10.3.10.19" "libcurand-dev=10.3.10.19" -y
 python -m pip install uv==0.10.12
 uv pip install --torch-backend=cu129 -r requirements.txt
 ```
 
+The CUDA 12.9 compiler and pinned cuRAND runtime and development packages provide the CUDA libraries and headers required to build DeepSpeed CPUAdam.
+
 or
 
 ```bash
+conda install -c nvidia "cuda-nvcc=12.9" -y
+conda install -c defaults "libcurand=10.3.10.19" "libcurand-dev=10.3.10.19" -y
 uv pip install --torch-backend=cu129 .
 uv pip install --torch-backend=cu129 -e .
 ```
