@@ -13,14 +13,15 @@ Operational runbook for `embedding-fine-tune-hf` covering environment setup, tra
 ## Install
 
 ```bash
-pip install -r requirements.txt
+python -m pip install uv==0.10.12
+uv pip install --torch-backend=cu129 -r requirements.txt
 ```
 
 or
 
 ```bash
-pip install .
-pip install -e .
+uv pip install --torch-backend=cu129 .
+uv pip install --torch-backend=cu129 -e .
 ```
 
 ## Environment Variables

@@ -17,8 +17,11 @@ cd embedding-fine-tune-hf
 conda create -n myenv python=3.12 -y
 conda activate myenv
 
-# install requirements
-pip install -r requirements.txt
+# install requirements with the validated CUDA backend
+python -m pip install uv==0.10.12
+uv pip install \
+    --torch-backend=cu129 \
+    -r requirements.txt
 ```
 
 ### .env file setting
@@ -72,8 +75,9 @@ __You can set additional arguments through the command line.__
 
 ```bash
 # install project dependencies from pyproject.toml
-pip install .
+python -m pip install uv==0.10.12
+uv pip install --torch-backend=cu129 .
 
 # [OPTIONAL] editable install for development
-pip install -e .
+uv pip install --torch-backend=cu129 -e .
 ```
