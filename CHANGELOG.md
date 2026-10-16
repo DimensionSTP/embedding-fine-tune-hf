@@ -2,6 +2,14 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.14] - 2026-10-16
+
+- Update embedding-training requirements to Datasets 5.1.0, DeepSpeed 0.19.7, Hugging Face Hub 1.33.0, PEFT 0.21.2, PyArrow 25.0.1, Sentence Transformers 6.1.0, Tokenizers 0.23.3, PyTorch 2.13.0, and Transformers 5.19.0.
+- Refresh the portable environment snapshot while keeping directly required packages distinct from the full training and inference environment.
+- Keep package dependencies dynamically sourced from requirements.txt without a second independently maintained dependency list.
+- Preserve embedding datasets, pooling and normalization settings, training entrypoints, exported artifacts, and retrieval evaluation behavior.
+- Verify declared versions and release metadata without claiming a fresh installation, GPU training run, or model-quality improvement.
+
 ## [v1.0.13] - 2026-08-21
 
 - Update the validated environment snapshot to `flash-linear-attention==0.5.2` and `fla-core==0.5.2`, including the Blackwell Gated DeltaNet backward stability fix.
