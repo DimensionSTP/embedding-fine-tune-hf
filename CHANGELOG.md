@@ -2,6 +2,12 @@
 
 All notable changes to this repository are documented in this file.
 
+## [v1.0.15] - 2026-10-22
+
+- Update the direct DeepSpeed training dependency from 0.19.7 to 0.19.8 and record the same version in the full environment snapshot.
+- Record Liger Kernel 0.8.5 and additional agent-environment, text-processing, and API-support packages in the reproducibility snapshot without making them direct embedding-training requirements.
+- Preserve the dynamically sourced dependency list, embedding datasets, pooling and normalization settings, training entrypoints, exported artifacts, and retrieval evaluation behavior.
+
 ## [v1.0.14] - 2026-10-16
 
 - Update embedding-training requirements to Datasets 5.1.0, DeepSpeed 0.19.7, Hugging Face Hub 1.33.0, PEFT 0.21.2, PyArrow 25.0.1, Sentence Transformers 6.1.0, Tokenizers 0.23.3, PyTorch 2.13.0, and Transformers 5.19.0.
